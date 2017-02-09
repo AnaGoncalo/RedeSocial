@@ -12,19 +12,27 @@ package grafo;
 public class Program {
     
     public static void main(String args[]) {
-        Grafo grafo = new Grafo();
+        BFS redeSocial = new BFS();
         
-        grafo.inserirVertice("v1");
-        grafo.inserirVertice("v2");
-        grafo.inserirVertice("v3");
-        grafo.inserirVertice("v4");
+        redeSocial.inserirVertice("v1");
+        redeSocial.inserirVertice("v2");
+        redeSocial.inserirVertice("v3");
+        redeSocial.inserirVertice("v4");
+        redeSocial.inserirVertice("v5");
+        redeSocial.inserirVertice("v6");
         
-        grafo.inserirAresta("v1", "v2", "v12");
-        grafo.inserirAresta("v2", "v4", "v24");
-        grafo.inserirAresta("v3", "v1", "v31");
-        grafo.inserirAresta("v4", "v3", "v43");
+        redeSocial.inserirAresta("v1", "v2", "1");
+        redeSocial.inserirAresta("v1", "v4", "-1");
+        redeSocial.inserirAresta("v2", "v3", "1");
+        redeSocial.inserirAresta("v4", "v5", "1");
+        redeSocial.inserirAresta("v4", "v6", "1");
+        redeSocial.inserirAresta("v5", "v6", "1");
         
-        grafo.MatrizAdjacencia();
+        
+        //redeSocial.MatrizAdjacencia();
+        //redeSocial.MatrizCusto();
+        
+        redeSocial.sugestoes(redeSocial.findVertice("v1"));
         
         /*
         for(Vertice a: grafo.getVertices())

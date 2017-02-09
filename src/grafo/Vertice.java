@@ -1,37 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package grafo;
 
-/**
- *
- * @author Ana Gonçalo
- */
 public class Vertice {
-    private String chave;
-    private String valor;
+    private String nome;
     private int grau;
+    private int visitado;
+    private int dist;
 
     public Vertice(String valor){
-        this.valor = valor;
-    }
-    
-    public String getChave() {
-        return chave;
+        this.nome = valor;
     }
 
-    public void setChave(String chave) {
-        this.chave = chave;
+    public String getNome() {
+        return nome;
     }
 
-    public String getValor() {
-        return valor;
-    }
-
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getGrau() {
@@ -40,6 +25,22 @@ public class Vertice {
 
     public void setGrau(int grau) {
         this.grau = grau;
+    }
+
+    public int getVisitado() {
+        return visitado;
+    }
+
+    public void setVisitado(int visitado) {
+        this.visitado = visitado;
+    }
+
+    public int getDist() {
+        return dist;
+    }
+
+    public void setDist(int dist) {
+        this.dist = dist;
     }
     
 }

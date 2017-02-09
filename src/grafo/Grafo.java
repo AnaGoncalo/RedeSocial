@@ -20,7 +20,7 @@ public class Grafo {
     public Vertice findVertice(String o) {
         for (Vertice v : vertices) {
             //System.out.println(v.getValor() + " " + o);
-            if (v.getValor().equals(o)) {
+            if (v.getNome().equals(o)) {
                 return v;
             }
         }
@@ -97,7 +97,7 @@ public class Grafo {
     public void substituirVertice(Vertice v, String x) {
         for (Vertice w : vertices) {
             if (w == v) {
-                w.setValor(x);
+                w.setNome(x);
                 break;
             }
         }
@@ -108,7 +108,7 @@ public class Grafo {
         Vertice v = findVertice(o);
         for (Vertice w : vertices) {
             if (w == v) {
-                w.setValor(x);
+                w.setNome(x);
                 break;
             }
         }
@@ -187,7 +187,7 @@ public class Grafo {
                 arestas.remove(a);
             }
         }
-        String retorno = v.getValor();
+        String retorno = v.getNome();
         vertices.remove(v);
         return retorno;
     }
@@ -199,7 +199,7 @@ public class Grafo {
                 arestas.remove(a);
             }
         }
-        String retorno = v.getValor();
+        String retorno = v.getNome();
         vertices.remove(v);
         return retorno;
     }
@@ -252,14 +252,14 @@ public class Grafo {
         System.out.println("MATRIZ DE ADJACÊNCIA");
         for (int i = -1; i < vertices.size(); i++) {
             if (i >= 0) {
-                System.out.print(vertices.get(i).getValor());
+                System.out.print(vertices.get(i).getNome());
             }
 
             for (int j = -1; j < vertices.size(); j++) {
 
                 if(i == -1)
                     if(j >= 0)
-                        System.out.print(vertices.get(j).getValor() + " ");
+                        System.out.print(vertices.get(j).getNome() + " ");
                     else
                         System.out.print("   ");
                 else if (i >= 0 && j >= 0) {
@@ -274,6 +274,52 @@ public class Grafo {
             System.out.println("");
         }
 
+    }
+    
+    //Matriz de Adjacência
+    public void MatrizCusto() {
+        System.out.println("MATRIZ DE CUSTO");
+        for (int i = -1; i < vertices.size(); i++) {
+            if (i >= 0) {
+                System.out.print(vertices.get(i).getNome());
+            }
+
+            for (int j = -1; j < vertices.size(); j++) {
+
+                if(i == -1)
+                    if(j >= 0)
+                        System.out.print(vertices.get(j).getNome() + " ");
+                    else
+                        System.out.print("   ");
+                else if (i >= 0 && j >= 0) {
+                    if (isAdjacente(vertices.get(i), vertices.get(j))) {
+                        System.out.print(" " + findAresta(vertices.get(i), vertices.get(j)).getValor() + " ");
+                    } 
+                    else {
+                        System.out.print(" 0 ");
+                    }
+                } 
+            }
+            System.out.println("");
+        }
+
+    }
+    
+    public Aresta findAresta(Vertice i, Vertice j){
+        for(int k = 0; k <= arestas.size(); k++){
+            if(arestas.get(k).hasVertice(i) && arestas.get(k).hasVertice(j))
+                return arestas.get(k);
+        }
+        return null;
+    }
+    
+    public List<Vertice> adjascentes(Vertice v){
+        List<Vertice> adjascentes = new ArrayList();
+        for(int i = 0; i < vertices.size(); i++){
+            if(isAdjacente(v, vertices.get(i)))
+                adjascentes.add(vertices.get(i));
+        }
+        return adjascentes;
     }
 
 }
